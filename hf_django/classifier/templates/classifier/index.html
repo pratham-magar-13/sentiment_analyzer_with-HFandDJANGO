@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugging Face + Django</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Hugging Face Sentiment Analyzer</h1>
+    <p>Enter any text below to analyze its sentiment using an AI model.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="user_text" rows="4" cols="50" placeholder="Type your text here..." required>{{ user_text }}</textarea>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+
+    {% if label %}
+        <hr>
+        <h2>Analysis Results:</h2>
+        <p><strong>Sentiment:</strong> {{ label }}</p>
+        <p><strong>Confidence Score:</strong> {{ score }}%</p>
+    {% endif %}
+</body>
+</html>
